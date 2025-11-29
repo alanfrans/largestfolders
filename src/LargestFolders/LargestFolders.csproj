@@ -14,7 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="folder.ico" />
     <EmbeddedResource Include="folder.ico" />
   </ItemGroup>
 

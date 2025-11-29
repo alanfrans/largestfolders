@@ -33,7 +33,7 @@ public class TrayApplicationContext : ApplicationContext
             return new Icon(stream);
         }
         
-        // Fallback to shell folder icon if embedded resource not found
+        // Fallback to default application icon if embedded resource not found
         return SystemIcons.Application;
     }
 

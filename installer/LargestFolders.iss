@@ -43,7 +43,7 @@ Name: "startupicon"; Description: "Run at Windows startup"; GroupDescription: "S
 
 [Files]
 ; Main application files
-Source: "..\src\LargestFolders\bin\Release\net8.0-windows\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\src\LargestFolders\bin\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; Icon file
 Source: "..\src\LargestFolders\folder.ico"; DestDir: "{app}"; Flags: ignoreversion
 

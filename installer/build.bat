@@ -8,9 +8,12 @@ echo.
 REM Navigate to the solution directory
 cd /d "%~dp0.."
 
+REM Define output path variable
+set PUBLISH_PATH=src\LargestFolders\bin\publish
+
 REM Clean and build in Release mode with self-contained deployment
 echo Step 1: Building application in Release mode...
-dotnet publish src\LargestFolders\LargestFolders.csproj -c Release -r win-x64 --self-contained true -o src\LargestFolders\bin\Release\net8.0-windows\publish
+dotnet publish src\LargestFolders\LargestFolders.csproj -c Release -r win-x64 --self-contained true -o %PUBLISH_PATH%
 if %ERRORLEVEL% neq 0 (
     echo Error: Build failed!
     pause
