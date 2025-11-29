@@ -13,7 +13,7 @@ public class TrayApplicationContext : ApplicationContext
     {
         _notifyIcon = new NotifyIcon
         {
-            Icon = SystemIcons.Application,
+            Icon = LoadFolderIcon(),
             Text = "Largest Folders - Click to view",
             Visible = true,
             ContextMenuStrip = CreateContextMenu()
@@ -21,6 +21,20 @@ public class TrayApplicationContext : ApplicationContext
 
         // Only handle left-click to show the form (not double-click to avoid rapid show/hide)
         _notifyIcon.MouseClick += NotifyIcon_MouseClick;
+    }
+
+    private static Icon LoadFolderIcon()
+    {
+        // Try to load the embedded folder icon from resources
+        var assembly = typeof(TrayApplicationContext).Assembly;
+        using var stream = assembly.GetManifestResourceStream("LargestFolders.folder.ico");
+        if (stream != null)
+        {
+            return new Icon(stream);
+        }
+        
+        // Fallback to shell folder icon if embedded resource not found
+        return SystemIcons.Application;
     }
 
     private ContextMenuStrip CreateContextMenu()

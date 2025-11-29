@@ -10,6 +10,12 @@
     <AssemblyName>LargestFolders</AssemblyName>
     <Version>1.0.0</Version>
     <Description>Windows application that displays the largest folders on the C: drive</Description>
+    <ApplicationIcon>folder.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="folder.ico" />
+    <EmbeddedResource Include="folder.ico" />
+  </ItemGroup>
 
 </Project>
