@@ -4,22 +4,46 @@ A Windows system tray application that displays the top 100 largest folders on t
 
 ## Features
 
-- **System Tray Integration**: Runs silently in the background in the Windows system tray
+- **System Tray Integration**: Runs silently in the background in the Windows system tray with a 📁 folder icon
 - **One-Click Access**: Left-click the tray icon to view the largest folders
 - **Context Menu**: Right-click for options including Refresh and Exit
 - **Live Scanning**: Scans the C: drive and displays results with path and size
-- **Background Operation**: Designed to run via Windows Task Scheduler at startup
+- **Easy Installation**: Windows installer for quick setup on Windows 10/11
+- **Background Operation**: Optional auto-start with Windows
+
+## Installation
+
+### Using the Installer (Recommended)
+
+1. Download the latest `LargestFoldersSetup.exe` from the [Releases](../../releases) page
+2. Run the installer
+3. Follow the installation wizard
+4. Optionally select "Run at Windows startup" during installation
+
+### Building from Source
+
+See [Building from Source](#building-from-source) section below.
 
 ## Requirements
 
-- Windows 10 or later
-- .NET 8.0 Runtime (Windows Desktop)
+- Windows 10 or later (Windows 11 fully supported)
+- .NET 8.0 Desktop Runtime (included in installer's self-contained deployment)
 
 ## Building from Source
 
 ```bash
 cd src/LargestFolders
 dotnet build
+```
+
+### Building the Installer
+
+See [installer/README.md](installer/README.md) for detailed instructions on building the Windows installer.
+
+Quick build:
+```cmd
+cd installer
+build.bat
 ```
 
 ## Running the Application
@@ -50,7 +74,7 @@ schtasks /create /tn "LargestFolders" /xml "path\to\LargestFolders.xml"
 
 ## Usage
 
-1. Once running, the application icon appears in the system tray
+1. Once running, the application folder icon (📁) appears in the system tray
 2. **Left-click** the tray icon to open the folder viewer
 3. **Right-click** the tray icon for menu options:
    - **Show Largest Folders**: Opens the main window

@@ -1,6 +1,7 @@
 # Build outputs
 bin/
 obj/
+publish/
 
 # IDE
 .vs/
@@ -13,3 +14,6 @@ packages/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Installer output
+installer/output/

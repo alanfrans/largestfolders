@@ -19,7 +19,7 @@ public partial class MainForm : Form
         Size = new Size(800, 600);
         MinimumSize = new Size(600, 400);
         StartPosition = FormStartPosition.CenterScreen;
-        Icon = SystemIcons.Application;
+        Icon = LoadFolderIcon();
 
         // Create status label
         _statusLabel = new Label
@@ -178,5 +178,19 @@ public partial class MainForm : Form
         }
         
         base.OnFormClosing(e);
+    }
+
+    private static Icon LoadFolderIcon()
+    {
+        // Try to load the embedded folder icon from resources
+        var assembly = typeof(MainForm).Assembly;
+        using var stream = assembly.GetManifestResourceStream("LargestFolders.folder.ico");
+        if (stream != null)
+        {
+            return new Icon(stream);
+        }
+        
+        // Fallback to application icon if embedded resource not found
+        return SystemIcons.Application;
     }
 }
