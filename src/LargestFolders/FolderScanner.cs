@@ -10,6 +10,16 @@ public record FolderInfo(string Path, long SizeBytes);
 /// </summary>
 public static class FolderScanner
 {
+    // System directories to skip during scanning
+    private static readonly string[] SystemDirectories =
+    {
+        @"C:\$Recycle.Bin",
+        @"C:\System Volume Information",
+        @"C:\Config.Msi",
+        @"C:\Recovery",
+        @"C:\ProgramData\Microsoft\Windows\Containers"
+    };
+
     /// <summary>
     /// Gets the largest folders on the specified drive.
     /// </summary>
@@ -123,16 +133,7 @@ public static class FolderScanner
 
     private static bool IsSystemDirectory(string path)
     {
-        var systemDirs = new[]
-        {
-            @"C:\$Recycle.Bin",
-            @"C:\System Volume Information",
-            @"C:\Config.Msi",
-            @"C:\Recovery",
-            @"C:\ProgramData\Microsoft\Windows\Containers"
-        };
-
-        return systemDirs.Any(sysDir => 
+        return SystemDirectories.Any(sysDir => 
             path.StartsWith(sysDir, StringComparison.OrdinalIgnoreCase));
     }
 }

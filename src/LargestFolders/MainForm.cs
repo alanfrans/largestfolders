@@ -93,6 +93,8 @@ public partial class MainForm : Form
 
     /// <summary>
     /// Triggers a refresh of the folder list.
+    /// This is intentionally async void as it's called like an event handler
+    /// from the tray context menu. Errors are handled within ScanFoldersAsync.
     /// </summary>
     public async void RefreshFolderList()
     {

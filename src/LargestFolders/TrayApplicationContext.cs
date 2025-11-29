@@ -19,8 +19,8 @@ public class TrayApplicationContext : ApplicationContext
             ContextMenuStrip = CreateContextMenu()
         };
 
-        _notifyIcon.Click += NotifyIcon_Click;
-        _notifyIcon.DoubleClick += NotifyIcon_Click;
+        // Only handle left-click to show the form (not double-click to avoid rapid show/hide)
+        _notifyIcon.MouseClick += NotifyIcon_MouseClick;
     }
 
     private ContextMenuStrip CreateContextMenu()
@@ -39,14 +39,12 @@ public class TrayApplicationContext : ApplicationContext
         return contextMenu;
     }
 
-    private void NotifyIcon_Click(object? sender, EventArgs e)
+    private void NotifyIcon_MouseClick(object? sender, MouseEventArgs e)
     {
-        if (e is MouseEventArgs mouseArgs && mouseArgs.Button != MouseButtons.Left)
+        if (e.Button == MouseButtons.Left)
         {
-            return;
+            ShowMainForm();
         }
-
-        ShowMainForm();
     }
 
     private void ShowFolders_Click(object? sender, EventArgs e)
